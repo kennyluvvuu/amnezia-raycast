@@ -15,6 +15,7 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { errorMessage } from "./lib/errors";
 import { rememberLastUsedProfile } from "./lib/last-used";
+import { reconcileStates } from "./lib/reconcile";
 import { AMNEZIAWG_APP_STORE_URL, isAmneziaWGInstalled, openAmneziaWG } from "./lib/system";
 import { scutil } from "./lib/scutil";
 import type { Profile, VpnState } from "./lib/types";
@@ -46,7 +47,7 @@ export default function Command() {
         }),
       );
 
-      setRows(withStates.sort(compareRows));
+      setRows(reconcileStates(withStates).sort(compareRows));
       setError(null);
     } catch (caught) {
       setError(errorMessage(caught));

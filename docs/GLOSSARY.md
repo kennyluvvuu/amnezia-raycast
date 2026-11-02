@@ -18,6 +18,8 @@ Terms used across this project, the ADRs and the code. Definitions describe how 
 
 **Settled state** — The terminal state an action waits for: `connected` after `start`, `disconnected` after `stop`. Polled every 500 ms for at most 15 seconds.
 
+**Stale state** — A `disconnecting` status that macOS keeps reporting for a profile whose tunnel is already gone. It is rendered as `disconnected` when another profile is `connected`, since AmneziaWG allows a single tunnel.
+
 **Toggle** — The primary action on a list item: `start` when the profile is not active, `stop` when it is.
 
 **Toggle command** — The no-view Raycast command `toggle-connection`. It disconnects the active profile when there is one, otherwise connects the last used profile.

@@ -15,4 +15,5 @@ Connecting a profile does not ask for confirmation. The previous tunnel drops be
 
 - The quick toggle stays a single keystroke.
 - Users may lose an active session by pressing Enter on another profile; the list immediately reflects the new state.
+- macOS may leave the old service in `Disconnecting` after the tunnel has moved. Because the single-tunnel rule is enforced by the system, such a row is rendered as `Disconnected` while another profile is `Connected`.
 - If AmneziaWG ever supports concurrent tunnels, this ADR must be revisited.

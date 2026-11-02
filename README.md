@@ -28,6 +28,7 @@ The extension is registered in Raycast in development mode. Assign hotkeys to **
 - **⌘R** reloads the list; **Open AmneziaWG** launches the app.
 - The status refreshes when the command opens, on ⌘R, and after each connect/disconnect. There is no background polling.
 - AmneziaWG keeps a single tunnel at a time. Connecting another profile disconnects the current one; the list reflects this after the action.
+- macOS sometimes leaves the previous profile in `Disconnecting` long after the tunnel has moved. While another profile is `Connected`, such a row is shown as `Disconnected` — the tunnel is already gone.
 
 ### Toggle VPN Connection
 
