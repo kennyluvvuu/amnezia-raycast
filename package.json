@@ -1,0 +1,44 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "amnezia-wg",
+  "title": "AmneziaWG",
+  "description": "Connect and disconnect AmneziaWG VPN profiles.",
+  "icon": "extension-icon.png",
+  "author": "kenny",
+  "license": "MIT",
+  "categories": [
+    "Applications",
+    "Security"
+  ],
+  "commands": [
+    {
+      "name": "manage-vpn",
+      "title": "Manage VPN Connections",
+      "subtitle": "AmneziaWG",
+      "description": "Connect and disconnect AmneziaWG VPN profiles.",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^2.10.1",
+    "@raycast/utils": "^2.3.3"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.2.0",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "react": "^19.3.1",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
