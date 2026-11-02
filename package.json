@@ -17,6 +17,13 @@
       "subtitle": "AmneziaWG",
       "description": "Connect and disconnect AmneziaWG VPN profiles.",
       "mode": "view"
+    },
+    {
+      "name": "toggle-connection",
+      "title": "Toggle VPN Connection",
+      "subtitle": "AmneziaWG",
+      "description": "Connect the last used AmneziaWG profile or disconnect the active one.",
+      "mode": "no-view"
     }
   ],
   "dependencies": {

@@ -6,6 +6,8 @@ Terms used across this project, the ADRs and the code. Definitions describe how 
 
 **AmneziaWG** — The macOS app (`org.amnezia.awg`) that provides AmneziaWG VPN profiles as NetworkExtension packet tunnels. It is the only client this extension controls.
 
+**Last used profile** — The profile most recently connected through this extension, remembered in Raycast's extension storage under `last-used-profile`. The toggle command connects it when nothing is active. On a first run, a rename or a deletion it falls back to the first enabled profile alphabetically.
+
 **NetworkExtension** — Apple's framework for VPN and content-filter providers. AmneziaWG registers each profile as a VPN service backed by `org.amnezia.awg.network-extension`, which macOS runs independently of the app process.
 
 **Profile** — A NetworkExtension VPN configuration created in AmneziaWG and visible in System Settings. In code, `Profile` means the service name plus its system UUID and enabled flag.
@@ -17,6 +19,8 @@ Terms used across this project, the ADRs and the code. Definitions describe how 
 **Settled state** — The terminal state an action waits for: `connected` after `start`, `disconnected` after `stop`. Polled every 500 ms for at most 15 seconds.
 
 **Toggle** — The primary action on a list item: `start` when the profile is not active, `stop` when it is.
+
+**Toggle command** — The no-view Raycast command `toggle-connection`. It disconnects the active profile when there is one, otherwise connects the last used profile.
 
 **Tunnel** — The live VPN connection owned by a profile. AmneziaWG keeps at most one tunnel at a time, so connecting another profile implicitly disconnects the current one.
 

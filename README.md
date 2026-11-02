@@ -17,15 +17,25 @@ npm install
 npm run dev
 ```
 
-The extension is registered in Raycast in development mode. Assign a hotkey to **Manage VPN Connections** in Raycast settings.
+The extension is registered in Raycast in development mode. Assign hotkeys to **Manage VPN Connections** and **Toggle VPN Connection** in Raycast settings.
 
 ## Usage
+
+### Manage VPN Connections
 
 - Open **Manage VPN Connections**. The list shows every `org.amnezia.awg` service reported by the system, with the active profile first.
 - Press **Enter** to connect or disconnect the selected profile.
 - **⌘R** reloads the list; **Open AmneziaWG** launches the app.
 - The status refreshes when the command opens, on ⌘R, and after each connect/disconnect. There is no background polling.
 - AmneziaWG keeps a single tunnel at a time. Connecting another profile disconnects the current one; the list reflects this after the action.
+
+### Toggle VPN Connection
+
+- A no-view command for a single hotkey. It closes the Raycast window and reports progress and results through a floating HUD outside the window.
+- If any profile is connected or connecting, it disconnects that profile.
+- Otherwise it connects the last profile used through this extension. Connecting from the list also remembers the profile.
+- When there is no remembered profile — or it was renamed or deleted — it falls back to the first enabled profile alphabetically.
+- The remembered name is stored in Raycast's extension storage on this Mac. Nothing else is persisted.
 
 ## How it works
 
@@ -44,6 +54,7 @@ All calls use `execFile` with an argument array (no shell). No `sudo`, no privil
 - Only connection state is shown — no endpoint, throughput or handshake details.
 - Services disabled in System Settings are still listed (marked as disabled); connecting them may fail.
 - Duplicate profile names are ambiguous to `scutil`; the extension disambiguates them visually but the system may still reject the call.
+- The toggle command only remembers profiles it connected itself; connects made in AmneziaWG or System Settings are not recorded, though they are still detected and disconnected.
 - The system output of `scutil` is undocumented and may change between macOS releases.
 
 ## Icon and branding

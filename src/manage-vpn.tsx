@@ -14,6 +14,7 @@ import {
 } from "@raycast/api";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { errorMessage } from "./lib/errors";
+import { rememberLastUsedProfile } from "./lib/last-used";
 import { AMNEZIAWG_APP_STORE_URL, isAmneziaWGInstalled, openAmneziaWG } from "./lib/system";
 import { scutil } from "./lib/scutil";
 import type { Profile, VpnState } from "./lib/types";
@@ -78,6 +79,11 @@ export default function Command() {
         }
 
         await scutil.waitForSettledState(row.name, disconnecting ? "disconnected" : "connected");
+
+        if (!disconnecting) {
+          await rememberLastUsedProfile(row.name).catch(() => undefined);
+        }
+
         await toast.hide();
         await showHUD(`${disconnecting ? "Disconnected" : "Connected"}: ${row.name}`);
       } catch (caught) {

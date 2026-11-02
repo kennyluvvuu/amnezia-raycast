@@ -9,7 +9,7 @@ The primary scenario is a quick toggle: open Raycast, pick a profile, press Ente
 
 ## Decision
 
-- Ship one List command in the MVP; no menu-bar command.
+- Ship one List command in the MVP; no menu-bar command. (ADR-0007 later adds a second, no-view toggle command; the list remains the only UI.)
 - Show connection state only: `Connected`, `Connecting`, `Disconnected`, `Disconnecting`, `Invalid`.
 - Refresh on command open, on ⌘R and after each action. No background polling.
 - After `start`/`stop`, poll `status` every 500 ms until the settled state, for at most 15 seconds, and await that inside the action.
